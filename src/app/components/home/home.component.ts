@@ -6,17 +6,14 @@ import { Province } from './../../model/province';
 
 @Component({
   selector: 'app-home',
-  template: `
-    <pre>{{ dati | json }}</pre>
-  `,
-  styles: [
-  ]
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
   dati: Dati[] = [];
   regione: Regioni[] = [];
-  provine: Province[] = [];
+  province: Province[] = [];
 
   constructor(private datiService: DatiService) { }
 
@@ -24,12 +21,27 @@ export class HomeComponent implements OnInit {
     this.datiService.getDati()
       .subscribe(res =>  {
         this.dati = res;
-        console.log(this.dati);
+      })
+  }
+
+  getDatiReg() {
+    this.datiService.getDatiReg()
+      .subscribe(res =>  {
+        this.regione = res;
+      })
+  }
+
+  getDatiProv() {
+    this.datiService.getDatiProv()
+      .subscribe(res =>  {
+        this.province = res;
       })
   }
 
   ngOnInit(): void {
     this.getDati();
+    this.getDatiReg();
+    this.getDatiProv();
   }
 
 }
