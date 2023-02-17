@@ -10,7 +10,9 @@ export class SortPipe implements PipeTransform {
   transform(value: any[], sortOrder: SortOrder | string = 'asc', sortKey?: string): any {
     sortOrder = sortOrder && (sortOrder.toLowerCase() as any);
 
-    if (!value || (sortOrder !== 'asc' && sortOrder !== 'desc')) { return value; }
+    if (!value || (sortOrder !== 'asc' && sortOrder !== 'desc')) { 
+      return value; 
+    }
 
     let numberArray = [];
     let stringArray = [];
@@ -23,7 +25,13 @@ export class SortPipe implements PipeTransform {
       stringArray = value
           .filter(item => typeof item[sortKey] === 'string')
           .sort((a, b) => {
-            if (a[sortKey] < b[sortKey]) { return -1; } else if (a[sortKey] > b[sortKey]) { return 1; } else { return 0; }
+            if (a[sortKey] < b[sortKey]) { 
+              return -1; 
+            } else if (a[sortKey] > b[sortKey]) { 
+              return 1; 
+            } else { 
+              return 0; 
+            }
           });
     }
     const sorted = [

@@ -156,7 +156,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let reg of regione">
+            <tr *ngFor="let reg of regione | sort: 'desc': 'totale_casi'">
               <td>{{ reg.denominazione_regione}}</td>
               <td style="color: red">{{ reg.totale_casi}}</td>
               <td style="color: rgb(255, 170, 0)">{{ reg.totale_positivi}}</td>
@@ -177,7 +177,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let prov of province">
+            <tr *ngFor="let prov of province | sort: 'desc': 'totale_casi'">
               <td>{{ prov.denominazione_provincia}}</td>
               <td style="color: red">{{ prov.totale_casi}}</td>
             </tr>
